@@ -1,0 +1,54 @@
+<<<<<<< HEAD:src/MovieDatabase.java
+=======
+package src.movieDB;
+
+>>>>>>> 1865265151a59dcc4f65841d708251b7bf7b1433:src/movieDB/MovieDatabase.java
+import java.util.ArrayList;
+import java.util.Iterator;
+import movie.movie; // Assuming your Movie class is in the movie package
+
+public class MovieDatabase {
+    private ArrayList<movie> movies;
+
+    public MovieDatabase() {
+        this.movies = new ArrayList<>();
+    }
+
+    // Helper method to find a movie by title
+    private movie findMovie(String title) {
+        for (movie movie : movies) {
+            if (movie.getTitle().equalsIgnoreCase(title)) {
+                return movie;
+            }
+        }
+        return null;
+    }
+
+    public void addMovie(movie movie) {
+        if (findMovie(movie.getTitle()) == null) {
+            movies.add(movie);
+            System.out.println("Movie added successfully.");
+        } else {
+            System.out.println("Movie already exists in the database.");
+        }
+    }
+
+    public void removeMovie(String title) {
+        movie movie = findMovie(title);
+        if (movie != null) {
+            movies.remove(movie);
+            System.out.println("Movie removed successfully.");
+        } else {
+            System.out.println("Movie not found in the database.");
+        }
+    }
+
+    public movie getMovieDetails(String title) {
+        return findMovie(title);
+    }
+
+    // Optional: Method to list all movies in the database
+    public ArrayList<movie> getAllMovies() {
+        return new ArrayList<>(movies); // Return a copy of the list to avoid external modifications
+    }
+}

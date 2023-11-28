@@ -16,7 +16,7 @@ public class movie{
         return this.title;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title){ 
         this.title = title;
     }
 
@@ -57,4 +57,8 @@ public class movie{
         m.setTitle("The legend of Zorro");
         System.out.println(m.toString());
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1865265151a59dcc4f65841d708251b7bf7b1433
