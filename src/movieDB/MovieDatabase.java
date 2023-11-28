@@ -1,4 +1,4 @@
-package src.movieDB;
+package movieDB;
 
 import java.util.ArrayList;
 import java.util.Iterator;
