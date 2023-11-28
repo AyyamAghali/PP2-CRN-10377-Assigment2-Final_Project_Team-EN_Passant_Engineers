@@ -1,7 +1,6 @@
 package movieDB;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import movie.movie;
 
 public class MovieDatabase {
