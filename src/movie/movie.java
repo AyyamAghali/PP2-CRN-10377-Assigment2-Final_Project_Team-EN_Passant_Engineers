@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 package movie;
 public class movie{
     private String title;
@@ -61,4 +58,3 @@ public class movie{
         System.out.println(m.toString());
     }
 }
->>>>>>> 1-afp-1-create-files
