@@ -2,7 +2,7 @@ package movieDB;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import movie.movie; // Assuming your Movie class is in the movie package
+import movie.movie;
 
 public class MovieDatabase {
     private ArrayList<movie> movies;
