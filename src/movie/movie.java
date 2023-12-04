@@ -40,7 +40,7 @@ public class movie{
         return this.runningTime;
     }
 
-    public void setRunningTime(){
+    public void setRunningTime(int runningTime){
         this.runningTime = runningTime;
     }
 
@@ -48,7 +48,7 @@ public class movie{
         return this.getTitle() + " " + this.getDirector() + " " + String.valueOf(this.getYear()) + " " + String.valueOf(this.getRunningTime()) + " minutes";
     }
     
-    public static void main(String[] args){
+   /* / public static void main(String[] args){
         System.out.println("It will return movies!");
 
         movie m = new movie("The mask of zorro", "Martin Campbell", 1998, 90);
@@ -56,5 +56,5 @@ public class movie{
         System.out.println(m.toString());
         m.setTitle("The legend of Zorro");
         System.out.println(m.toString());
-    }
+    }/*/ 
 }

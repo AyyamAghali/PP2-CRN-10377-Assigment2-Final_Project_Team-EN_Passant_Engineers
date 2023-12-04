@@ -16,7 +16,7 @@ public class MovieJFrame {
         img.setSize(1100, 1700);
 		
 		JPanel pan = new JPanel();
-		pan.setLayout(null);
+		//pan.setLayout(null);
 		
 		JLabel textLabel = new JLabel();
 		textLabel.setText(m.getTitle());
@@ -28,14 +28,14 @@ public class MovieJFrame {
 		pan.add(textLabel);
 		
         String path = "https://m.media-amazon.com/images/M/MV5BMzg4ZjQ4OGUtZjkxMi00Y2I2LWEzNTAtODI2ZjkxMGVjNTQwXkEyXkFqcGdeQXVyNjgxNTAwNjQ@._V1_.jpg";
-        String filename = "zorro.jpg";
+        // String filename = "zorro.jpg";
         URL url = new URL(path);
         //BufferedImage bfr = ImageIO.read(url);
 		ImageIcon image = new ImageIcon(url); 
 		
         JLabel imageLabel = new JLabel();
 		imageLabel.setIcon(image);
-		imageLabel.setBounds(5, 4, 1009, 1600);
+		imageLabel.setBounds(5, 4, 1004, 1500);
 		pan.add(imageLabel);
 
 		img.setContentPane(pan);
