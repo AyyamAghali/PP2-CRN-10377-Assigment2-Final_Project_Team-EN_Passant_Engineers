@@ -1,4 +1,4 @@
-package movie;
+package gui;
 import java.io.IOException;
 import java.awt.Color;
 import java.awt.Font;
@@ -6,6 +6,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import movie.movie;
+
 import java.net.URL;
 import java.net.MalformedURLException;
 
