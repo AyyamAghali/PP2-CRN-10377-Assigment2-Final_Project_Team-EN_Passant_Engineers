@@ -1,6 +1,4 @@
 package user;
-import java.util;
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
