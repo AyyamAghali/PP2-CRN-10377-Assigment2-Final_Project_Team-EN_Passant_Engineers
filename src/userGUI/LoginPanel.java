@@ -70,7 +70,6 @@ public class LoginPanel extends JPanel {
         String password = new String(passwordField.getPassword());
         
         // Check username and password
-        // You can integrate this with your User class for authentication
         System.out.println("Login attempt with Username: " + username + " and Password: " + password);
     }
 
