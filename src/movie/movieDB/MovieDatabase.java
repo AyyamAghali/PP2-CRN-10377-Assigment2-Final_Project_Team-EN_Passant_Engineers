@@ -1,4 +1,4 @@
-package movieDB;
+package movie.movieDB;
 
 import java.util.ArrayList;
 import movie.movie;
