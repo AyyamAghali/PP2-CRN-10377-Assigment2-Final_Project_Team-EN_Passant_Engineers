@@ -43,7 +43,7 @@ public class MovieDatabase {
         return findMovie(title);
     }
 
-    // Optional: Method to list all movies in the database
+    
     public ArrayList<movie> getAllMovies() {
         return new ArrayList<>(movies); // Return a copy of the list to avoid external modifications
     }
