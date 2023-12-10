@@ -1,15 +1,21 @@
 package movie;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class movie{
     private String title;
     private String director;
     private int releaseYear;
     private int runningTime;
+    private String imagePath;
 
-    public movie(String title, String director, int releaseYear, int runningTime){
+    public movie(String title, String director, int releaseYear, int runningTime, String imagePath){
         this.title = title;
         this.director = director;
         this.releaseYear = releaseYear;
         this.runningTime = runningTime;
+        this.imagePath = imagePath;
     }
     
     public String getTitle(){
@@ -42,6 +48,18 @@ public class movie{
 
     public void setRunningTime(int runningTime){
         this.runningTime = runningTime;
+    }
+
+    public String getPath(){
+        return this.imagePath;
+    }
+
+    public void setPath(String imagePath){
+        this.imagePath = imagePath;
+    }
+
+    public URL getURL() throws MalformedURLException{
+        return new URL(this.getPath());
     }
 
     public String toString(){
