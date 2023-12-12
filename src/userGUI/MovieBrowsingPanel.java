@@ -41,13 +41,12 @@ public class MovieBrowsingPanel extends JPanel {
     }
 
     private void viewMovieDetails() {
-        // Implement the logic to view details of the selected movie
+
         String selectedMovie = movieList.getSelectedValue();
         System.out.println("Viewing details of: " + selectedMovie);
     }
 
     private void addToWatchlist() {
-        // Implement the logic to add the selected movie to the watchlist
         String selectedMovie = movieList.getSelectedValue();
         System.out.println("Adding to watchlist: " + selectedMovie);
     }

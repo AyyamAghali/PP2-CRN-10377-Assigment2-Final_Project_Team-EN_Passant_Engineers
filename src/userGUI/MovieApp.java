@@ -1,6 +1,8 @@
 package userGUI;
 import javax.swing.*;
 
+import movie.movie;
+
 public class MovieApp extends JFrame {
 
     public MovieApp() {
@@ -14,5 +16,15 @@ public class MovieApp extends JFrame {
         SwingUtilities.invokeLater(() -> {
             new MovieApp().setVisible(true);
         });
+    }
+    private static void createAndShowGUI() {
+        JFrame frame = new JFrame("Movie Browsing");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+
+        MovieBrowsingPanel panel = new MovieBrowsingPanel();
+        frame.add(panel);
+
+        frame.setVisible(true);
     }
 }

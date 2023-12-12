@@ -45,7 +45,7 @@ public class MovieJFrame {
         textLabel.setBounds(5, 5, 300, 30);
         pan.add(textLabel);
 
-        // Set preferred size for the text fields
+
         movieName.setColumns(15);
         movieDirector.setColumns(15);
 

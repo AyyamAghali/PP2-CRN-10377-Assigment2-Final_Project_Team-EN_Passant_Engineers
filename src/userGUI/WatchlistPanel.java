@@ -31,11 +31,9 @@ public class WatchlistPanel extends JPanel {
     }
 
     private void removeFromWatchlist() {
-        // Implement the logic to remove the selected movie from the watchlist
         String selectedMovie = watchlist.getSelectedValue();
         if (selectedMovie != null) {
             watchlistModel.removeElement(selectedMovie);
-            // Further logic to update the actual watchlist data
             System.out.println("Removed from watchlist: " + selectedMovie);
         }
     }
