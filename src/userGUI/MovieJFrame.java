@@ -82,7 +82,7 @@ public class MovieJFrame {
        pan.add(addButton);
        addButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                if (movieName.getText().equals(movie.getTitle()) || movieDirector.getText().equals(movie.getDirector())){ 
+                if (movieName.getText().equals(movie.getTitle()) || movieDirector.getText().equals(movie.getDirector()) && movieName.getText().equals(movie.getTitle())){ 
                     ImageIcon img;
                     try {
                         img = new ImageIcon(movie.getURL());
