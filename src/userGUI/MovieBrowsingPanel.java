@@ -71,12 +71,25 @@ private void initializeUI() {
         add(viewDetailsButton, BorderLayout.SOUTH);
     }
 
-    private void loadMovies() {
-        // Mockup: Load movies into the list model
-        // Replace this with actual logic to fetch movies
-        movieListModel.addElement(new Movie("Movie 1", "Director 1", 2021, 120));
-        movieListModel.addElement(new Movie("Movie 2", "Director 2", 2020, 110));
-        // ... add more movies
+   private void loadMovies() {
+        String query = "SELECT title, director, releaseYear, runningTime FROM movies";
+
+        try (Connection conn = AccessDatabaseConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                String title = rs.getString("title");
+                String director = rs.getString("director");
+                int releaseYear = rs.getInt("releaseYear");
+                int runningTime = rs.getInt("runningTime");
+
+                Movie movie = new Movie(title, director, releaseYear, runningTime);
+                movieListModel.addElement(movie);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); 
+        }
     }
 
     private void handleViewDetails() {
