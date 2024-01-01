@@ -1,30 +1,49 @@
 package userGUI;
-import javax.swing.*;
 
-import movie.movie;
+import javax.swing.*;
+import java.awt.*;
 
 public class MovieApp extends JFrame {
 
     public MovieApp() {
-        setTitle("Online Movie Database Management System");
-        setSize(800, 600); // Set the initial size
+        initializeUI();
+    }
+
+    private void initializeUI() {
+        setTitle("Movie Database Application");
+        setSize(800, 600); // Set initial size
+        setLocationRelativeTo(null); // Center the window
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Initialize and add components here
+
+        JTabbedPane tabbedPane = new JTabbedPane();
+
+        JPanel loginPanel = createLoginPanel();
+        JPanel movieBrowsingPanel = createMovieBrowsingPanel();
+
+
+        tabbedPane.addTab("Login", loginPanel);
+        tabbedPane.addTab("Browse Movies", movieBrowsingPanel);
+ 
+
+        add(tabbedPane);
     }
 
+    private JPanel createLoginPanel() {
+        // Initialize and return the LoginPanel
+        return new LoginPanel();
+    }
+
+    private JPanel createMovieBrowsingPanel() {
+        // Initialize and return the MovieBrowsingPanel
+        return new MovieBrowsingPanel();
+    }
+
+    // Main method to run the application
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new MovieApp().setVisible(true);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new MovieApp().setVisible(true);
+            }
         });
-    }
-    private static void createAndShowGUI() {
-        JFrame frame = new JFrame("Movie Browsing");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
-
-        MovieBrowsingPanel panel = new MovieBrowsingPanel();
-        frame.add(panel);
-
-        frame.setVisible(true);
     }
 }
