@@ -2,7 +2,8 @@ package userGUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LoginPanel extends JPanel {
     private JTextField usernameField;
@@ -10,25 +11,24 @@ public class LoginPanel extends JPanel {
     private JButton loginButton, registerButton;
 
     public LoginPanel() {
-        // Layout setup
+        initializeUI();
+        setupEventHandlers();
+    }
+
+    private void initializeUI() {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Initialize components
         usernameField = new JTextField(20);
         passwordField = new JPasswordField(20);
         loginButton = new JButton("Login");
         registerButton = new JButton("Register");
-
-        // Add components to the panel
-        gbc.insets = new Insets(4, 4, 4, 4);
 
         gbc.gridx = 0;
         gbc.gridy = 0;
         add(new JLabel("Username:"), gbc);
 
         gbc.gridx = 1;
-        gbc.gridy = 0;
         add(usernameField, gbc);
 
         gbc.gridx = 0;
@@ -36,19 +36,34 @@ public class LoginPanel extends JPanel {
         add(new JLabel("Password:"), gbc);
 
         gbc.gridx = 1;
-        gbc.gridy = 1;
         add(passwordField, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 2;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
         add(loginButton, gbc);
 
         gbc.gridy = 3;
         add(registerButton, gbc);
+    }
+    private void loadUserCredentials() {
+        userCredentials = new HashMap<>();
+        // Load user credentials from a file (mockup for demonstration)
+        File file = new File("user_credentials.txt");
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(":");
+                if (parts.length == 2) {
+                    userCredentials.put(parts[0], parts[1]);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-        // Event handling
+    private void setupEventHandlers() {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,17 +80,37 @@ public class LoginPanel extends JPanel {
     }
 
     private void handleLogin() {
-        // Logic for login
         String username = usernameField.getText();
         String password = new String(passwordField.getPassword());
-        
-        // Check username and password
-        System.out.println("Login attempt with Username: " + username + " and Password: " + password);
+
+        if (userCredentials.containsKey(username) && userCredentials.get(username).equals(password)) {
+            JOptionPane.showMessageDialog(this, "Login Successful");
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void handleRegister() {
-        // Logic for registration
-        // Open registration panel or dialog
-        System.out.println("Registration button clicked");
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword());
+
+        if (!userCredentials.containsKey(username)) {
+            userCredentials.put(username, password);
+            saveCredentials();
+            JOptionPane.showMessageDialog(this, "Registration Successful");
+        } else {
+            JOptionPane.showMessageDialog(this, "Username already exists", "Registration Failed", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void saveCredentials() {
+        // Save updated credentials to the file
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("user_credentials.txt", false))) {
+            for (Map.Entry<String, String> entry : userCredentials.entrySet()) {
+                bw.write(entry.getKey() + ":" + entry.getValue() + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
