@@ -5,19 +5,32 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import movie.movie;
 
 public class DatabaseOperations {
     public static void main(String[] args) throws ClassNotFoundException, SQLException{
-        userInputs obj = new userInputs();
-        
-
-        //insertUser(movieName: "Salam", movieDirector: "Ayxan", 90, 1992);
+        // userInputs obj = new userInputs();
+        //insertUser("Salam", "Ayxan", 90, 1992);
+        movie movie = new movie("The mask of zorro", "Martin Campbell", 90, 1998, "");
+        ArrayList<movie> list = new ArrayList<movie>();
+        list.add(movie);
+        insertUser(list); 
     }
 
-    public static void insertUser(String movieName, String movieDirector, int runningTime, int releaseYear)
+    public static void connection(){
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+        }catch(ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public static void insertUser(ArrayList<movie> list)
             throws ClassNotFoundException, SQLException {
+        connection();
         String url = "jdbc:ucanaccess://D://WORK//PP2-CRN-10377-Assigment2-Final_Project_Team-EN_Passant_Engineers//src//db//movie.accdb";
-        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         Connection connection = DriverManager.getConnection(url);
 
         try {
@@ -25,10 +38,13 @@ public class DatabaseOperations {
 
             String insertQuery = "INSERT INTO userInputs (movieName,  movieDirector,  runningTime, releaseYear) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-            preparedStatement.setString(1, movieName);
-            preparedStatement.setString(2, movieDirector);
-            preparedStatement.setInt(3, runningTime);
-            preparedStatement.setInt(4, releaseYear);
+           
+            for (movie movie : list){
+            preparedStatement.setString(1, movie.getTitle());
+            preparedStatement.setString(2, movie.getDirector());
+            preparedStatement.setInt(3, movie.getRunningTime());
+            preparedStatement.setInt(4, movie.getYear());
+            }
 
             int rowsAffected = preparedStatement.executeUpdate();
 
@@ -40,7 +56,7 @@ public class DatabaseOperations {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
+        }/*finally {
             try {
                 if (connection != null) {
                     connection.close();
@@ -48,6 +64,6 @@ public class DatabaseOperations {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
     }
 }
