@@ -12,7 +12,6 @@ import movie.movie;
 public class DatabaseOperations {
     public static void main(String[] args) throws ClassNotFoundException, SQLException{
         // userInputs obj = new userInputs();
-        //insertUser("Salam", "Ayxan", 90, 1992);
         movie movie = new movie("The mask of zorro", "Martin Campbell", 90, 1998, "");
         ArrayList<movie> list = new ArrayList<movie>();
         list.add(movie);
