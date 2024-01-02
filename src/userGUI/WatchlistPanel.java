@@ -1,14 +1,18 @@
 package userGUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WatchlistPanel extends JPanel {
     private JList<String> watchlist;
     private DefaultListModel<String> watchlistModel;
     private JButton removeFromWatchlistButton;
+    private List<String> allMovies; 
 
-    public WatchlistPanel() {
+    public WatchlistPanel(List<String> allMovies) {
+        this.allMovies = allMovies;
         setLayout(new BorderLayout());
 
         watchlistModel = new DefaultListModel<>();
@@ -18,24 +22,28 @@ public class WatchlistPanel extends JPanel {
         removeFromWatchlistButton = new JButton("Remove from Watchlist");
         removeFromWatchlistButton.addActionListener(e -> removeFromWatchlist());
 
-        // Adding components to the panel
         add(new JScrollPane(watchlist), BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(removeFromWatchlistButton);
         add(buttonPanel, BorderLayout.SOUTH);
-    }
 
-    public void updateWatchlist(List<String> movies) {
-        watchlistModel.clear();
-        movies.forEach(watchlistModel::addElement);
+        updateWatchlist();
     }
 
     private void removeFromWatchlist() {
         String selectedMovie = watchlist.getSelectedValue();
         if (selectedMovie != null) {
             watchlistModel.removeElement(selectedMovie);
-            System.out.println("Removed from watchlist: " + selectedMovie);
         }
     }
+
+    public void updateWatchlist() {
+        watchlistModel.clear();
+        List<String> sortedWatchlist = allMovies.stream()
+                                               .sorted() // Sorting alphabetically
+                                               .collect(Collectors.toList());
+        sortedWatchlist.forEach(watchlistModel::addElement);
+    }
+
 }
