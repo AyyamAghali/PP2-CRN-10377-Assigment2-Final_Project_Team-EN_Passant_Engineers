@@ -17,7 +17,7 @@ To run the project on your local machine, folow these steps:
 
 
 ## Team Members and Work Allocation
-- **Aykhan Guliyev**: Focused on the `db` and `movie` folders. Responsible for implementing the database operations, including CRUD functionalities, and managing the movie entity representation.
+- **Aykhan Guliyev**: Focused on the `db` , `movie` and  `UserGUI` folders. Responsible for implementing the database operations, including CRUD functionalities, and managing the movie entity representation.
 - **Ayyam Aghali**: Worked on the `User`, `UserGUI`, and `MovieDatabase.java`. Key responsibilities included developing user entity handling, enhancing the user interface, and managing the in-memory movie database functionality.
 - **Riad Bagishov**: Concentrated on the `UserGUI`. Tasked with developing and refining the graphical user interface, ensuring a seamless and user-friendly experience for browsing movies and managing user interactions.
 
