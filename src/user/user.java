@@ -43,10 +43,14 @@ public class user {
         }
     }
 
-    // Save user data to a file
-    private static void saveUsers(Map<String, String> users) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("users.dat"))) {
-            oos.writeObject(users);
+    /**
+     * Saves user data to a file for persistence.
+     *
+     * @param users Map of username and password pairs.
+     */
+    public static void saveUsers(Map<String, String> users) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("users.dat"))) {
+            out.writeObject(users);
         } catch (IOException e) {
             e.printStackTrace();
         }
