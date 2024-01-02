@@ -10,6 +10,15 @@ public class movie{
     private int runningTime;
     private String imagePath;
 
+      /**
+     * Constructs a new Movie instance.
+     *
+     * @param title        The title of the movie.
+     * @param director     The director of the movie.
+     * @param releaseYear  The release year of the movie.
+     * @param runningTime  The running time of the movie in minutes.
+     */
+
     public movie(String title, String director, int releaseYear, int runningTime, String imagePath){
         this.title = title;
         this.director = director;
@@ -22,7 +31,10 @@ public class movie{
         return this.title;
     }
 
-    public void setTitle(String title){ 
+      public void setTitle(String title) {
+        if (title == null || title.isEmpty()) {
+            throw new IllegalArgumentException("Title cannot be empty");
+        }
         this.title = title;
     }
 
@@ -30,7 +42,10 @@ public class movie{
         return this.director;
     }
 
-    public void setDirector(String director){
+     public void setDirector(String director) {
+        if (director == null || director.isEmpty()) {
+            throw new IllegalArgumentException("Director cannot be empty");
+        }
         this.director = director;
     }
     
@@ -38,15 +53,22 @@ public class movie{
         return this.releaseYear;
     }
 
-    public void setYear(int releaseYear){
+      public void setReleaseYear(int releaseYear) {
+        if (releaseYear < 1800 || releaseYear > 2100) { // Assuming valid years
+            throw new IllegalArgumentException("Invalid release year");
+        }
         this.releaseYear = releaseYear;
     }
+
 
     public int getRunningTime(){
         return this.runningTime;
     }
 
-    public void setRunningTime(int runningTime){
+    public void setRunningTime(int runningTime) {
+        if (runningTime < 0) {
+            throw new IllegalArgumentException("Running time cannot be negative");
+        }
         this.runningTime = runningTime;
     }
 
@@ -65,6 +87,11 @@ public class movie{
     public String toString(){
         return this.getTitle() + " " + this.getDirector() + " " + String.valueOf(this.getYear()) + " " + String.valueOf(this.getRunningTime()) + " minutes";
     }
+       @Override
+    public int compareTo(Movie other) {
+        return this.title.compareTo(other.title); // Default sorting by title
+    }
+
     
    /* / public static void main(String[] args){
         System.out.println("It will return movies!");
