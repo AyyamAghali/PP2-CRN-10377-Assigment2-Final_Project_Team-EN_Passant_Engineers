@@ -34,7 +34,7 @@ To run the project on your local machine, folow these steps:
 3. If you want to access the database in your localhost, you should initialize in PostgreSQL database "movie-local" user to "movie", password to "1234";
 
 ## YouTube Video Link
-[]
+[https://youtu.be/tIBXjiT6J1s]
 
 
 ## Additional Notes
